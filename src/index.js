@@ -14,7 +14,7 @@ inputEl.addEventListener('input', debounce(onSearchCountry, DEBOUNCE_DELAY));
 function onSearchCountry(e) {
     let inputValue = e.target.value.trim();
 
-    if (e.target.value.trim() !==0) {
+    if (e.target.value.trim()) {
         fetchCountries(inputValue)
             .then(dataCountries => {
                 createMarkupCountryList(dataCountries)
@@ -22,8 +22,5 @@ function onSearchCountry(e) {
             .catch(error => {
                 Notify.failure("Oops, there is no country with that name")
             })
-    } else {
-        countryListEl.innerHTML = '';
-        countryInfoEl.innerHTML = '';
     }
 }
